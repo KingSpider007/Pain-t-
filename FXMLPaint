@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="paint.FXMLPaintController">
+    <top>
+        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+            <children>
+                <MenuBar cache="true" cacheHint="SPEED">
+                    <menus>
+                        <Menu text="File">
+                            <items>
+                                <MenuItem fx:id="openBut" onAction="#openBut" text="Open" />
+                                <MenuItem fx:id="svBut" mnemonicParsing="false" onAction="#svBut" text="Save" />
+                                <MenuItem fx:id="saveBut" mnemonicParsing="false" onAction="#saveBut" text="Save As" />
+                                <SeparatorMenuItem mnemonicParsing="false" />
+                                <MenuItem mnemonicParsing="false" text="Settings..." />
+                                <SeparatorMenuItem mnemonicParsing="false" />
+                                <MenuItem fx:id="exitBut" mnemonicParsing="false" onAction="#exitBut" text="Exit" />
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Edit">
+                            <items>
+                                <MenuItem fx:id="undoBut" mnemonicParsing="false" onAction="#undoBut" text="Undo" />
+                                <MenuItem fx:id="redoBut" mnemonicParsing="false" onAction="#redoBut" text="Redo" />
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="View">
+                            <items>
+                                <MenuItem fx:id="inBut" mnemonicParsing="false" onAction="#inBut" text="Zoom In" />
+                                <MenuItem fx:id="outBut" mnemonicParsing="false" onAction="#outBut" text="Zoom Out" />
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Help">
+                            <items>
+                                <MenuItem fx:id="aboutBut" mnemonicParsing="false" onAction="#aboutBut" text="About" />
+                                <MenuItem fx:id="infoBut" mnemonicParsing="false" onAction="#infoBut" text="Information" />
+                                <MenuItem fx:id="hotBut" mnemonicParsing="false" onAction="#hotBut" text="Shortcuts" />
+                            </items>
+                        </Menu>
+                    </menus>
+                </MenuBar>
+            </children>
+        </VBox>
+    </top>
+    <left>
+        <VBox prefHeight="452.0" prefWidth="120.0" BorderPane.alignment="CENTER">
+            <children>
+                <ColorPicker fx:id="colorPick" onAction="#colorPicker">
+                    <VBox.margin>
+                        <Insets bottom="25.0" top="10.0" />
+                    </VBox.margin>
+                    <opaqueInsets>
+                        <Insets left="5.0" right="5.0" />
+                    </opaqueInsets>
+                </ColorPicker>
+                <Pane prefHeight="66.0" prefWidth="114.0">
+                    <children>
+                        <Circle fx:id="testCircle" layoutX="64.0" layoutY="33.0" radius="10.0" smooth="false" stroke="BLACK" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="10.0" />
+                    </children>
+                </Pane>
+                <Slider fx:id="control" accessibleText="Line Width" blockIncrement="0.0" centerShape="false" majorTickUnit="10.0" max="50.0" minorTickCount="5" onMouseDragged="#slider" showTickLabels="true" showTickMarks="true" snapToTicks="true">
+                    <VBox.margin>
+                        <Insets top="15.0" />
+                    </VBox.margin>
+                </Slider>
+                <VBox>
+                    <children>
+                        <HBox prefHeight="40.0" prefWidth="100.0">
+                            <children>
+                                <ToggleButton mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" text="Lock Screen">
+                                    <HBox.margin>
+                                        <Insets left="5.0" right="5.0" />
+                                    </HBox.margin>
+                                </ToggleButton>
+                            </children>
+                            <VBox.margin>
+                                <Insets top="12.0" />
+                            </VBox.margin>
+                        </HBox>
+                  <HBox prefHeight="40.0" prefWidth="100.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="85.0">
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/folder/8935.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="85.0" text=" ">
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/folder/zoom-out.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="12.0" />
+                     </VBox.margin>
+                  </HBox>
+                        <HBox prefHeight="40.0" prefWidth="100.0">
+                            <children>
+                                <ToggleButton fx:id="draw" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="32.0" prefWidth="85.0">
+                                    <HBox.margin>
+                                        <Insets left="5.0" right="5.0" />
+                                    </HBox.margin>
+                                    <toggleGroup>
+                                        <ToggleGroup fx:id="tools" />
+                                    </toggleGroup>
+                                    <graphic>
+                                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@images/folder/freehand.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </ToggleButton>
+                                <ToggleButton fx:id="line" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="32.0" prefWidth="85.0" toggleGroup="$tools">
+                                    <HBox.margin>
+                                        <Insets left="5.0" right="5.0" />
+                                    </HBox.margin>
+                                    <graphic>
+                                        <ImageView fitHeight="30.0" fitWidth="30.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@images/folder/line.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </ToggleButton>
+                            </children>
+                            <VBox.margin>
+                                <Insets top="12.0" />
+                            </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="40.0" prefWidth="100.0">
+                            <children>
+                                <ToggleButton fx:id="fill" mnemonicParsing="false" prefHeight="32.0" prefWidth="85.0" toggleGroup="$tools">
+                                    <HBox.margin>
+                                        <Insets left="5.0" right="5.0" />
+                                    </HBox.margin>
+                                    <graphic>
+                                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@images/folder/fill.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </ToggleButton>
+                                <ToggleButton fx:id="eraser" mnemonicParsing="false" prefHeight="32.0" prefWidth="85.0" toggleGroup="$tools">
+                                    <HBox.margin>
+                                        <Insets left="5.0" right="5.0" />
+                                    </HBox.margin>
+                                    <graphic>
+                                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@images/folder/eraser-tool.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </ToggleButton>
+                            </children>
+                            <VBox.margin>
+                                <Insets top="12.0" />
+                            </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="40.0" prefWidth="100.0">
+                            <children>
+                                <ToggleButton fx:id="colorGrabber" mnemonicParsing="false" prefHeight="32.0" prefWidth="85.0" toggleGroup="$tools">
+                                    <HBox.margin>
+                                        <Insets left="5.0" right="5.0" />
+                                    </HBox.margin>
+                                    <graphic>
+                                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@images/folder/color%20picker.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </ToggleButton>
+                                <ToggleButton fx:id="clearCanvas" mnemonicParsing="false" prefHeight="32.0" prefWidth="85.0">
+                                    <toggleGroup>
+                                        <ToggleGroup fx:id="tools1" />
+                                    </toggleGroup>
+                                    <HBox.margin>
+                                        <Insets left="5.0" right="5.0" />
+                                    </HBox.margin>
+                                    <graphic>
+                                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@images/folder/clear.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </ToggleButton>
+                            </children>
+                            <VBox.margin>
+                                <Insets top="12.0" />
+                            </VBox.margin>
+                        </HBox>
+                    </children>
+                    <VBox.margin>
+                        <Insets top="12.0" />
+                    </VBox.margin>
+                </VBox>
+            </children>
+        </VBox>
+    </left>
+    <center>
+        <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <content>
+                <TabPane prefHeight="800.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                        <Tab text="Untitled Tab 1">
+                            <content>
+                                <Canvas fx:id="canvas" height="600.0" onMouseDragged="#mouseDragger" onMousePressed="#mousePresser" onMouseReleased="#mouseReleaser" width="800.0" />
+                            </content>
+                        </Tab>
+                        <Tab text="Untitled Tab 2">
+                            <content>
+                                <Canvas fx:id="canvas1" height="600.0" onMouseDragged="#mouseDragger" onMousePressed="#mousePresser" onMouseReleased="#mouseReleaser" width="800.0" />
+                            </content>
+                        </Tab>
+                        <Tab text="Untitled Tab 3">
+                            <content>
+                                <Canvas fx:id="canvas2" height="600.0" width="800.0" />
+                            </content>
+                        </Tab>
+                        <Tab text="Untitled Tab 4">
+                            <content>
+                                <Canvas fx:id="canvas3" height="600.0" width="800.0" />
+                            </content>
+                        </Tab>
+                        <Tab text="Untitled Tab 5">
+                            <content>
+                                <Canvas fx:id="canvas4" height="600.0" width="800.0" />
+                            </content>
+                        </Tab>
+                        <Tab text="Untitled Tab 6">
+                            <content>
+                                <Canvas fx:id="canvas5" height="600.0" width="800.0" />
+                            </content>
+                        </Tab>
+                        <Tab text="Untitled Tab 7">
+                            <content>
+                                <Canvas fx:id="canvas6" height="600.0" width="800.0" />
+                            </content>
+                        </Tab>
+                    </tabs>
+                </TabPane>
+            </content>
+        </ScrollPane>
+    </center>
+    <right>
+        <VBox prefHeight="370.0" prefWidth="75.0" BorderPane.alignment="CENTER">
+            <children>
+                <ToggleButton fx:id="elipse" mnemonicParsing="false" prefHeight="32.0" prefWidth="75.0" toggleGroup="$tools">
+                    <VBox.margin>
+                        <Insets top="12.0" />
+                    </VBox.margin>
+                    <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/folder/Oval-PNG-Image.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </ToggleButton>
+                <ToggleButton fx:id="square" mnemonicParsing="false" onMouseDragged="#mouseDragger" onMousePressed="#mousePresser" onMouseReleased="#mouseReleaser" prefHeight="32.0" prefWidth="75.0" toggleGroup="$tools">
+                    <VBox.margin>
+                        <Insets top="12.0" />
+                    </VBox.margin>
+                    <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/folder/square-icon.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </ToggleButton>
+                <ToggleButton fx:id="rec" mnemonicParsing="false" prefHeight="32.0" prefWidth="75.0" toggleGroup="$tools">
+                    <VBox.margin>
+                        <Insets top="12.0" />
+                    </VBox.margin>
+                    <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/folder/rectangleimproved.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </ToggleButton>
+                <ToggleButton fx:id="circle" mnemonicParsing="false" prefHeight="32.0" prefWidth="75.0" toggleGroup="$tools">
+                    <VBox.margin>
+                        <Insets top="12.0" />
+                    </VBox.margin>
+                    <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/folder/circle.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </ToggleButton>
+                <ToggleButton fx:id="triangle" mnemonicParsing="false" prefHeight="32.0" prefWidth="75.0" toggleGroup="$tools">
+                    <VBox.margin>
+                        <Insets top="12.0" />
+                    </VBox.margin>
+                    <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/folder/triangle-icon.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </ToggleButton>
+                <ToggleButton fx:id="placer" mnemonicParsing="false" prefHeight="32.0" prefWidth="75.0" toggleGroup="$tools">
+                    <VBox.margin>
+                        <Insets top="12.0" />
+                    </VBox.margin>
+                    <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/folder/freepolygon.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </ToggleButton>
+                <ToggleButton fx:id="polygon" mnemonicParsing="false" prefHeight="32.0" prefWidth="75.0" toggleGroup="$tools">
+                    <VBox.margin>
+                        <Insets top="12.0" />
+                    </VBox.margin>
+                    <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/folder/polygon.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </ToggleButton>
+                <ToggleButton fx:id="textBubble" mnemonicParsing="false" prefHeight="32.0" prefWidth="75.0" toggleGroup="$tools">
+                    <VBox.margin>
+                        <Insets top="12.0" />
+                    </VBox.margin>
+                    <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/folder/text.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </ToggleButton>
+            </children>
+        </VBox>
+    </right>
+    <bottom>
+        <HBox prefHeight="20.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label contentDisplay="CENTER" text="Patch Notes 5.0.3" />
+            <Label fx:id="ToolSelected" prefHeight="18.0" prefWidth="169.0" text="ToolSelected: " textAlignment="RIGHT">
+               <HBox.margin>
+                  <Insets left="25.0" />
+               </HBox.margin>
+            </Label>
+            </children>
+        </HBox>
+    </bottom>
+</BorderPane>
